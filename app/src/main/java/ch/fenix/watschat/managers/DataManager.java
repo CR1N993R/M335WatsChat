@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import ch.fenix.watschat.models.Contact;
 import ch.fenix.watschat.models.Message;
@@ -16,9 +17,7 @@ import lombok.Getter;
 public class DataManager {
     private Context context;
     private ObjectMapper mapper;
-    @Getter
     private static List<Contact> contacts;
-    @Getter
     private static List<Message> messages;
 
     public DataManager(Context context) {
@@ -27,11 +26,10 @@ public class DataManager {
             this.context = context;
             if (contacts == null || messages == null) {
                 String data = FileManager.getDataFromFile(context, "messages.json");
-                messages = mapper.readValue(data, new TypeReference<List<Message>>() {
-                });
+                messages = mapper.readValue(data, new TypeReference<List<Message>>() {});
                 data = FileManager.getDataFromFile(context, "contacts.json");
-                contacts = mapper.readValue(data, new TypeReference<List<Contact>>() {
-                });
+                contacts = mapper.readValue(data, new TypeReference<List<Contact>>() {});
+                //saveContact(new Contact("fdsa","fdsa"));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -57,6 +55,10 @@ public class DataManager {
         }
     }
 
+    public List<Message> getMessagesByTel(String tel) {
+        return messages.stream().filter(message -> message.getSender().equals(tel)).collect(Collectors.toList());
+    }
+
     public void saveMessages(List<Message> messages) {
         DataManager.messages.addAll(messages);
         saveMessagesToStorage();
@@ -72,5 +74,13 @@ public class DataManager {
             FileManager.saveDataToFile(context, "messages.json", mapper.writeValueAsString(messages));
         } catch (IOException e) {
         }
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public static List<Message> getMessages() {
+        return messages;
     }
 }
