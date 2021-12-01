@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WatsChat</string>
+    <string name="btn_send">Send</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
 </resources>

@@ -3,13 +3,18 @@ package ch.fenix.watschat.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -26,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        String tel = getApplicationContext().getSharedPreferences("telephone", MODE_PRIVATE).getString("telephone", "");
+        if (tel.equals("")) {
+            showDialog();
+        }
         dataManager = new DataManager(getApplicationContext());
         startService(new Intent(getApplicationContext(), SocketService.class));
         ((ListView) findViewById(R.id.chats)).setAdapter(new ChatsAdapter(this, R.layout.adapter_view_chats, dataManager.getContacts()));
@@ -35,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadChat(Contact contact) {
-        Intent intent = new Intent();
+        Intent intent = new Intent(this, ChatActivity.class);
         intent.putExtra("contact", contact.getTel());
         startActivity(intent);
     }
@@ -52,5 +61,20 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ContactsActivity.class);
         startActivity(intent);
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showDialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.custom_dialog);
+        EditText editText = dialog.findViewById(R.id.enter_phone);
+        Button button = dialog.findViewById(R.id.button_set_phone);
+        button.setOnClickListener(e ->{
+            if (editText.getText().toString().length() != 0) {
+                SharedPreferences sp = getApplicationContext().getSharedPreferences("telephone", MODE_PRIVATE);
+                sp.edit().putString("telephone", editText.getText().toString()).apply();
+                dialog.cancel();
+            }
+        });
+        dialog.show();
     }
 }

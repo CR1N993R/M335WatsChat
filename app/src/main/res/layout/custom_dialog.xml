@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/enter_phone"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="229dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="329dp"
+        android:ems="10"
+        android:inputType="phone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="160dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="210dp"
+        android:layout_marginEnd="177dp"
+        android:text="@string/enter_phone_number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/enter_phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/button_set_phone"
+        android:layout_width="80dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="165dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="166dp"
+        android:layout_marginBottom="288dp"
+        android:text="Submit"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_phone" />
+</androidx.constraintlayout.widget.ConstraintLayout>
