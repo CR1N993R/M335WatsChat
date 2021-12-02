@@ -3,17 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../../../layout/custom_preview.xml" value="0.23957016434892542" />
         <entry key="..\:/DEV/Java/M335/WatsChat/WatsChat/app/src/main/res/layout/activity_chat.xml" value="0.5" />
         <entry key="..\:/DEV/Java/M335/WatsChat/WatsChat/app/src/main/res/layout/activity_contacts.xml" value="0.559375" />
         <entry key="..\:/DEV/Java/M335/WatsChat/WatsChat/app/src/main/res/layout/activity_create_contact.xml" value="0.559375" />
         <entry key="..\:/DEV/Java/M335/WatsChat/WatsChat/app/src/main/res/layout/activity_edit_contact.xml" value="0.43478260869565216" />
         <entry key="..\:/DEV/Java/M335/WatsChat/WatsChat/app/src/main/res/layout/activity_main.xml" value="0.559375" />
+        <entry key="..\:/DEV/Java/M335/WatsChat/WatsChat/app/src/main/res/layout/adapter_view_chats.xml" value="0.559375" />
+        <entry key="..\:/DEV/Java/M335/WatsChat/WatsChat/app/src/main/res/layout/adapter_view_contacts.xml" value="0.559375" />
         <entry key="..\:/DEV/Java/M335/WatsChat/WatsChat/app/src/main/res/layout/adapter_view_message.xml" value="0.5" />
         <entry key="..\:/DEV/Java/M335/WatsChat/WatsChat/app/src/main/res/layout/custom_dialog.xml" value="0.559375" />
+        <entry key="..\:/DEV/Java/M335/WatsChat/WatsChat/app/src/main/res/menu/category_menu.xml" value="0.559375" />
         <entry key="..\:/DEV/Java/M335/WatsChat/WatsChat/app/src/main/res/menu/main_menu.xml" value="0.559375" />
+        <entry key="app/src/main/res/layout/activity_edit_contact.xml" value="0.35520833333333335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3546875" />
         <entry key="app/src/main/res/layout/adapter_view_chats.xml" value="0.3546875" />
         <entry key="app/src/main/res/layout/adapter_view_contacts.xml" value="0.3546875" />
+        <entry key="app/src/main/res/layout/adapter_view_message.xml" value="0.33" />
+        <entry key="app/src/main/res/menu/contacts_menu.xml" value="0.35520833333333335" />
       </map>
     </option>
   </component>

@@ -2,4 +2,9 @@
     <string name="app_name">WatsChat</string>
     <string name="btn_send">Send</string>
     <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="telephone">Telephone</string>
+    <string name="contact_name">Contact Name</string>
+    <string name="create">Create</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
 </resources>
