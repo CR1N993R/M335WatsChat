@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,7 +30,6 @@ public class DataManager {
                 messages = mapper.readValue(data, new TypeReference<List<Message>>() {});
                 data = FileManager.getDataFromFile(context, "contacts.json");
                 contacts = mapper.readValue(data, new TypeReference<List<Contact>>() {});
-                //saveContact(new Contact("fdsa","fdsa"));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,11 +52,20 @@ public class DataManager {
         try {
             FileManager.saveDataToFile(context, "contacts.json", mapper.writeValueAsString(contacts));
         } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     public List<Message> getMessagesByTel(String tel) {
-        return messages.stream().filter(message -> message.getSender().equals(tel)).collect(Collectors.toList());
+        List<Message> messages = new ArrayList<>();
+        for (Message message : DataManager.messages) {
+            if (message.getSender() != null && message.getSender().equals(tel)) {
+                messages.add(message);
+            } else if (message.getReceiverTel() != null && message.getReceiverTel().equals(tel)) {
+                messages.add(message);
+            }
+        }
+        return messages;
     }
 
     public void saveMessages(List<Message> messages) {
@@ -73,14 +82,15 @@ public class DataManager {
         try {
             FileManager.saveDataToFile(context, "messages.json", mapper.writeValueAsString(messages));
         } catch (IOException e) {
+            e.printStackTrace();
         }
+    }
+
+    public Contact getContactByTel(String tel) {
+        return contacts.stream().filter(contact -> contact.getTel().equals(tel)).findFirst().orElse(null);
     }
 
     public List<Contact> getContacts() {
         return contacts;
-    }
-
-    public static List<Message> getMessages() {
-        return messages;
     }
 }
