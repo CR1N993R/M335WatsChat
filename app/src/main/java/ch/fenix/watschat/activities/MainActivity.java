@@ -34,9 +34,10 @@ public class MainActivity extends AppCompatActivity {
         String tel = getApplicationContext().getSharedPreferences("telephone", MODE_PRIVATE).getString("telephone", "");
         if (tel.equals("")) {
             showDialog();
+        }else {
+            startService(new Intent(getApplicationContext(), SocketService.class));
         }
         dataManager = new DataManager(getApplicationContext());
-        startService(new Intent(getApplicationContext(), SocketService.class));
         ((ListView) findViewById(R.id.chats)).setAdapter(new ChatsAdapter(this, R.layout.adapter_view_chats, dataManager.getContacts()));
         ((ListView) findViewById(R.id.chats)).setOnItemClickListener((parent, view, position, id) -> {
             loadChat((Contact) parent.getItemAtPosition(position));
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences sp = getApplicationContext().getSharedPreferences("telephone", MODE_PRIVATE);
                 sp.edit().putString("telephone", editText.getText().toString()).apply();
                 dialog.cancel();
+                startService(new Intent(getApplicationContext(), SocketService.class));
             }
         });
         dialog.show();

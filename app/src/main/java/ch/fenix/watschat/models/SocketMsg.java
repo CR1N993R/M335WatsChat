@@ -13,6 +13,10 @@ public class SocketMsg {
         this.message = message;
     }
 
+    public SocketMsg(String tel) {
+        this.tel = tel;
+    }
+
     private Message message;
     private List<Message> messages;
     private String tel;

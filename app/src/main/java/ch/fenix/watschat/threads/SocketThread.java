@@ -37,6 +37,9 @@ public class SocketThread extends Thread {
             writer = new PrintWriter(socket.getOutputStream(),true);
             reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             running = true;
+            String tel = context.getSharedPreferences("telephone", Context.MODE_PRIVATE).getString("telephone", "");
+            ObjectMapper objectMapper = new ObjectMapper();
+            writer.println(objectMapper.writeValueAsString(new SocketMsg(tel)));
             listen();
         } catch (IOException e) {
             e.printStackTrace();
